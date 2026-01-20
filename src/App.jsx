@@ -1,12 +1,16 @@
-import { AuthProvider } from './context/AuthContext';
+// import { AuthProvider } from './context/AuthContext';
+// import { DataProvider } from './context/DataContext';
 import AppRoutes from './routes/AppRoutes';
 import './App.css';
 
 function App() {
   return (
-    <AuthProvider>
-      <AppRoutes />
-    </AuthProvider>
+    // <AuthProvider>
+    //   <DataProvider>
+        <AppRoutes />
+    //   </DataProvider>
+    // </AuthProvider>
+  
   );
 }
 
