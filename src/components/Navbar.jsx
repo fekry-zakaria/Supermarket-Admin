@@ -60,7 +60,13 @@ const Navbar = () => {
               </NavLink>
               <NavLink to="/products" className={navItemClass} onClick={() => setIsOpen(false)}>
                 المنتجات
-              </NavLink>
+              </NavLink> 
+                <NavLink to="/offers" className={navItemClass} onClick={() => setIsOpen(false)}>
+                 اضافة عرض
+                </NavLink>
+                <NavLink to="/offersList" className={navItemClass} onClick={() => setIsOpen(false)}>
+                   العروض
+                </NavLink>
             </div>
           </div>
         )}
