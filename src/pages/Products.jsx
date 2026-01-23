@@ -10,6 +10,7 @@ import {
 } from "firebase/firestore";
 import { db } from "../firebase/firebase";
 import Navbar from "../components/Navbar";
+import Swal from "sweetalert2";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -19,6 +20,7 @@ const Products = () => {
     name: "",
     category: "المواد الغذائية",
     price: "",
+    quantity: "",
   });
 
   const productsRef = useMemo(() => collection(db, "products"), []);
@@ -47,6 +49,7 @@ const Products = () => {
       name: product.name || "",
       category: product.category || "المواد الغذائية",
       price: product.price ?? "",
+      quantity: product.quantity ?? "",
     });
   };
 
@@ -56,6 +59,7 @@ const Products = () => {
       ...prev,
       [name]: value,
     }));
+
   };
 
   const handleUpdate = async (event) => {
@@ -66,18 +70,21 @@ const Products = () => {
       name: editForm.name,
       category: editForm.category,
       price: Number(editForm.price),
+      quantity: Number(editForm.quantity),
     });
 
     setEditingProduct(null);
+    Swal.fire("تم التعديل ✅", "", "success");
   };
 
   const handleDelete = async (productId) => {
     await deleteDoc(doc(db, "products", productId));
+    Swal.fire("تم الحذف ✅", "", "success");
   };
 
   return (
     <>
-      <Navbar />
+    
       <div className="min-h-screen bg-linear-to-br from-green-50 to-green-100 p-6">
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-8">
           <h1 className="text-3xl font-bold text-green-800">جميع المنتجات</h1>
@@ -122,6 +129,7 @@ const Products = () => {
                   <h2 className="text-lg font-bold text-gray-800">{product.name}</h2>
                   <p className="text-sm text-gray-500">التصنيف: {product.category}</p>
                   <p className="text-green-700 font-semibold text-lg">{product.price} ج.م</p>
+                  <p> {product.quantity} </p>
 
                   {/* Actions */}
                   <div className="flex gap-2 mt-3">
@@ -195,6 +203,18 @@ const Products = () => {
                   className="border border-green-200 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"
                 />
               </div>
+
+              <div className="flex flex-col gap-2">
+                <label className="text-sm font-medium text-green-800">الكمية</label>
+                <input
+                  type="number"
+                  name="quantity"
+                  value={editForm.quantity}
+                  onChange={handleEditChange}
+                  className="border border-green-200 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"
+                />
+              </div>
+
 
               <div className="flex gap-3 pt-2">
                 <button

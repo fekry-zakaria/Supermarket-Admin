@@ -1,5 +1,3 @@
-// import { AuthProvider } from './context/AuthContext';
-// import { DataProvider } from './context/DataContext';
 import AppRoutes from './routes/AppRoutes';
 import './App.css';
 

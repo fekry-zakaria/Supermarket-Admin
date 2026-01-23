@@ -5,6 +5,8 @@ import { db } from "../firebase/firebase";
 import { MdDashboardCustomize } from "react-icons/md";
 import Navbar from "../components/Navbar";
 import { FaUpload } from "react-icons/fa";
+import Swal from "sweetalert2";
+
 const Dashboard = () => {
   const [quantity, setQuantity] = useState(1);
   const [imageFile, setImageFile] = useState(null);
@@ -67,7 +69,7 @@ const [imagePreview, setImagePreview] = useState("");
       createdAt: serverTimestamp(),
     });
 
-    alert("تم إضافة المنتج ✅");
+    Swal.clickConfirm("تم إضافة المنتج ✅");
 
     setFormState({
       name: "",
@@ -78,7 +80,7 @@ const [imagePreview, setImagePreview] = useState("");
     setImagePreview("");
   } catch (err) {
     console.error(err);
-    alert("حصل خطأ ❌");
+    Swal.clickConfirm("حصل خطأ ❌");
   } finally {
     setIsSubmitting(false);
   }
@@ -86,7 +88,7 @@ const [imagePreview, setImagePreview] = useState("");
 
   return (
  <>
-<Navbar />
+
 <div className="min-h-screen bg-linear-to-br from-green-50 to-green-100 p-6">
 {toastMessage && (
   <div className="mb-6 rounded-xl border border-green-200 bg-white px-4 py-3 text-green-700 shadow-sm">

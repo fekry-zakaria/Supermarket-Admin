@@ -1,6 +1,8 @@
 import { useForm } from "react-hook-form";
 import { Login_auth } from "../services/auth.service";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+
 const Login = () => {
   const navigate = useNavigate();
   const {
@@ -27,7 +29,7 @@ const Login = () => {
       navigate("/dashboard");
     } catch (err) {
       console.log("ERROR:", err);
-      alert(err.message);
+      Swal.clickConfirm(  "invalid email or password" );
     }
     };
 

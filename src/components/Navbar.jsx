@@ -31,9 +31,16 @@ const Navbar = () => {
             <NavLink to="/dashboard" className={navItemClass}>
               الداشبورد
             </NavLink>
-            <NavLink to="/products" className={navItemClass}>
-              المنتجات
-            </NavLink>
+              <NavLink to="/products" className={navItemClass}>
+                المنتجات
+              </NavLink>
+                <NavLink to="/offers" className={navItemClass}>
+                 اضافة عرض
+                </NavLink>
+                <NavLink to="/offersList" className={navItemClass}>
+                   العروض
+                </NavLink>
+
           </div>
 
           <button
